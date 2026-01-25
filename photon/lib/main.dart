@@ -41,7 +41,6 @@ class PhotonApp extends StatelessWidget {
         surface: isDark ? const Color(0xFF1A1D24) : Colors.white,
       ),
       textTheme: GoogleFonts.outfitTextTheme(base.textTheme),
-      useMaterial3: true,
     );
   }
 }

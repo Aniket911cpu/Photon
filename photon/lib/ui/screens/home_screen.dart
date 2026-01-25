@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:provider/provider.dart';
-import '../../core/transfer/transfer_manager.dart';
+
 import 'transfer_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -75,12 +74,12 @@ class _ActionCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(24),
           boxShadow: [
             BoxShadow(
-              color: color.withOpacity(0.2),
+              color: color.withValues(alpha: 0.2),
               blurRadius: 20,
               offset: const Offset(0, 8),
             )
           ],
-          border: Border.all(color: color.withOpacity(0.1), width: 1),
+          border: Border.all(color: color.withValues(alpha: 0.1), width: 1),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -89,7 +88,7 @@ class _ActionCard extends StatelessWidget {
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: color.withOpacity(0.1),
+                color: color.withValues(alpha: 0.1),
               ),
               child: Icon(icon, size: 32, color: color),
             ),

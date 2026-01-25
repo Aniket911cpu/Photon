@@ -98,6 +98,7 @@ class _TransferScreenState extends State<TransferScreen> {
     );
   }
 
+  Future<void> _pickAndSend(BuildContext context) async {
     if (await _requestPermissions()) {
       if (!context.mounted) return;
       FilePickerResult? result = await FilePicker.platform.pickFiles(allowMultiple: true);
