@@ -1,4 +1,5 @@
-import 'dart:isotope'; // Not needed usually for models, but handy if we use SendPort here
+// Models don't strictly need isolate unless we pass ports, but if needed:
+// import 'dart:isolate';
 // actually we don't need dart:isolate imports for pure models unless we pass ports.
 
 enum TransferStatus {
