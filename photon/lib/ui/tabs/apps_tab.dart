@@ -11,7 +11,7 @@ class AppsTab extends StatefulWidget {
 }
 
 class _AppsTabState extends State<AppsTab> {
-  List<Application> _apps = [];
+  List<AppInfo> _apps = [];
   bool _isLoading = true;
 
   @override
@@ -22,10 +22,10 @@ class _AppsTabState extends State<AppsTab> {
 
   Future<void> _fetchApps() async {
     // Get installed apps (including system apps if needed, usually just user apps)
-    List<Application> apps = await FlutterDeviceApps.getInstalledApplications(
-      includeAppIcons: true,
-      includeSystemApps: false,
-      onlyAppsWithLaunchIntent: true,
+    List<AppInfo> apps = await FlutterDeviceApps.listApps(
+      includeIcons: true,
+      includeSystem: false,
+      onlyLaunchable: true,
     );
     
     if (mounted) {
@@ -45,18 +45,24 @@ class _AppsTabState extends State<AppsTab> {
     return ListView.builder(
       itemCount: _apps.length,
       itemBuilder: (context, index) {
-        final app = _apps[index] as ApplicationWithIcon;
+        final app = _apps[index];
         // Verify it is ApplicationWithIcon since we requested icons
-        final isSelected = picker.isSelected(app.apkFilePath);
+        final isSelected = picker.isSelected(app.packageName ?? '');
 
         return ListTile(
-          leading: Image.memory(app.icon, width: 40, height: 40),
-          title: Text(app.appName),
-          subtitle: Text(app.packageName),
+          leading: app.iconBytes != null 
+              ? Image.memory(app.iconBytes!, width: 40, height: 40) 
+              : const Icon(Icons.android, size: 40),
+          title: Text(app.appName ?? 'Unknown'),
+          subtitle: Text(app.packageName ?? 'Unknown'),
           trailing: isSelected 
              ? Icon(Icons.check_circle, color: Theme.of(context).primaryColor)
              : const Icon(Icons.circle_outlined),
-          onTap: () => picker.toggleSelection(app.apkFilePath),
+          onTap: () {
+            if (app.packageName != null) {
+              picker.toggleSelection(app.packageName!);
+            }
+          },
         );
       },
     );
