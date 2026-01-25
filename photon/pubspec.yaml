@@ -48,6 +48,12 @@ dependencies:
   shelf_router: ^1.1.4
   wakelock_plus: ^1.4.0
   google_fonts: ^8.0.0
+  photo_manager: ^3.8.3
+  photo_manager_image_provider: ^2.2.0
+  mobile_scanner: ^7.1.4
+  qr_flutter: ^4.1.0
+  wifi_iot: ^0.3.19+2
+  device_apps: ^2.2.0
 
 dev_dependencies:
   flutter_test:
