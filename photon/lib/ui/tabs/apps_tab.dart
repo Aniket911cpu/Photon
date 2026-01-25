@@ -1,4 +1,4 @@
-import 'package:device_apps/device_apps.dart';
+import 'package:flutter_device_apps/flutter_device_apps.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../core/providers/asset_picker_provider.dart';
@@ -22,7 +22,7 @@ class _AppsTabState extends State<AppsTab> {
 
   Future<void> _fetchApps() async {
     // Get installed apps (including system apps if needed, usually just user apps)
-    List<Application> apps = await DeviceApps.getInstalledApplications(
+    List<Application> apps = await FlutterDeviceApps.getInstalledApplications(
       includeAppIcons: true,
       includeSystemApps: false,
       onlyAppsWithLaunchIntent: true,

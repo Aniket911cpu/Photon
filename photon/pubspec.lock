@@ -97,14 +97,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.11"
-  device_apps:
-    dependency: "direct main"
-    description:
-      name: device_apps
-      sha256: e84dc74d55749993fd671148cc0bd53096e1be0c268fc364285511b1d8a4c19b
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.2.0"
   device_info_plus:
     dependency: "direct main"
     description:
@@ -174,6 +166,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.5.2"
+  flutter_device_apps:
+    dependency: "direct main"
+    description:
+      name: flutter_device_apps
+      sha256: c12b240ea569ce46dc857128822a0bbbf6233d142c8e1d397c141d8381d8a4ad
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.4.0"
+  flutter_device_apps_android:
+    dependency: transitive
+    description:
+      name: flutter_device_apps_android
+      sha256: d2c77e32979e4cb7176910d557ca1b1bf155728fcd1e493940549376e6835df4
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.4.1"
+  flutter_device_apps_platform_interface:
+    dependency: transitive
+    description:
+      name: flutter_device_apps_platform_interface
+      sha256: ab3fd0c936016998dceeb422fbd78ce56c151126b87097b8b12c016d1e2138fb
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.4.0"
   flutter_lints:
     dependency: "direct dev"
     description:
