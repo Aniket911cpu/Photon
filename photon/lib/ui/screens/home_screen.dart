@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
+
+import 'file_picker_screen.dart';
+import 'qr_scanner_screen.dart';
 import 'transfer_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -24,10 +27,9 @@ class HomeScreen extends StatelessWidget {
               icon: Icons.upload_rounded,
               color: const Color(0xFF00E5FF),
               onTap: () {
-                // Navigate to file picker (omitted for now) then transfer screen
-                // Simple Flow: Auto-start transfer with dummy data or navigate
+                // SEND FLOW: Home -> File Picker -> QR Generator -> Transfer
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (_) => const TransferScreen(isSender: true),
+                  builder: (_) => const FilePickerScreen(),
                 ));
               },
             ),
@@ -36,10 +38,17 @@ class HomeScreen extends StatelessWidget {
               title: "Receive",
               icon: Icons.download_rounded,
               color: const Color(0xFF2979FF),
-              onTap: () {
-                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (_) => const TransferScreen(isSender: false),
+              onTap: () async {
+                 // RECEIVE FLOW: Home -> QR Scanner -> Transfer
+                 final result = await Navigator.of(context).push(MaterialPageRoute(
+                  builder: (_) => const QrScannerScreen(),
                 ));
+
+                if (result != null && context.mounted) {
+                   Navigator.of(context).push(MaterialPageRoute(
+                     builder: (_) => const TransferScreen(isSender: false),
+                   ));
+                }
               },
             ),
           ],

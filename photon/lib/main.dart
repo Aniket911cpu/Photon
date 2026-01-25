@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'core/transfer/transfer_manager.dart';
-import 'ui/screens/home_screen.dart';
+
+import 'ui/screens/splash_screen.dart';
 
 void main() {
   runApp(const PhotonApp());
@@ -23,7 +24,7 @@ class PhotonApp extends StatelessWidget {
         theme: _buildTheme(Brightness.light),
         darkTheme: _buildTheme(Brightness.dark),
         themeMode: ThemeMode.dark, // Force dark for premium feel initially
-        home: const HomeScreen(),
+        home: const SplashScreen(),
       ),
     );
   }
