@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:photo_manager/photo_manager.dart';
+
 
 class AssetPickerProvider extends ChangeNotifier {
   // Sets of absolute paths

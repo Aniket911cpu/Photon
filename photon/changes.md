@@ -70,7 +70,6 @@ Migrated all instances to `Color.withValues`:
 ```dart
 // Before
 color.withOpacity(0.2)
-
 // After
 color.withValues(alpha: 0.2)
 ```
@@ -83,10 +82,28 @@ Explicitly setting `useMaterial3: true` in `ThemeData` is now deprecated as it i
 **Solution:**  
 Removed the line `useMaterial3: true` from the `_buildTheme` method in `main.dart`.
 
-## 7. Unused Imports
+## 7. Import Errors in File Picker
 **Problem:**  
-Several files had unused imports (e.g., `dart:math`, `provider`).
-*   *Warning*: `Unused import`.
+The `FilePickerScreen` could not find `PhotoVideoTab` and `AppsTab`.
+*   *Error*: `The method 'PhotoVideoTab' isn't defined...`
+*   *Context*: The file `lib/ui/screens/file_picker_screen.dart` was importing tabs from the same directory (`import 'photo_video_tab.dart'`) but the files were actually created in `lib/ui/tabs/`.
 
 **Solution:**  
-Ran cleanup to remove all unused import lines to keep the code clean and minimize bundle size.
+Corrected the relative import paths:
+```dart
+import '../tabs/photo_video_tab.dart';
+import '../tabs/apps_tab.dart';
+```
+
+## 8. Const Constructor Misuse
+**Problem:**  
+`TabBarView` children list was marked `const`, but the children widgets (`PhotoVideoTab`, `AppsTab`) are stateful or contain non-const parameters.
+*   *Error*: `The values in a const list literal must be constants.`
+
+**Solution:**  
+Removed the `const` keyword from the `children` list.
+
+## 9. Wifi IoT & Android Permissions
+**Note:**  
+While `wifi_iot` is implemented, Android 10+ (Q) restricts programmatic WiFi connection (Hotspot) significantly. The current implementation uses `WiFiForIoTPlugin.connect`, which may prompt the user for permission or fail silently if "Rough Location" permission isn't granted.
+*   *Future Work*: Implement `flutter_p2p_connection` for a more robust standard P2P Group Owner flow on modern Android.

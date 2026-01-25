@@ -3,8 +3,8 @@ import 'package:photo_manager/photo_manager.dart';
 import 'package:provider/provider.dart';
 import '../../core/providers/asset_picker_provider.dart';
 import '../../core/transfer/transfer_manager.dart';
-import 'photo_video_tab.dart';
-import 'apps_tab.dart';
+import '../tabs/photo_video_tab.dart';
+import '../tabs/apps_tab.dart';
 
 class FilePickerScreen extends StatelessWidget {
   const FilePickerScreen({super.key});
@@ -40,8 +40,8 @@ class FilePickerScreen extends StatelessWidget {
                   )
                 ],
               ),
-              body: const TabBarView(
-                children: [
+              body: TabBarView(
+                children: const [
                    PhotoVideoTab(requestType: RequestType.image),
                    PhotoVideoTab(requestType: RequestType.video),
                    AppsTab(),

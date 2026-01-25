@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import '../../core/connection/connection_payload.dart';
 import 'package:wifi_iot/wifi_iot.dart';
-import 'package:provider/provider.dart';
-import '../../core/transfer/transfer_manager.dart';
+
 
 class QrScannerScreen extends StatefulWidget {
   const QrScannerScreen({super.key});
